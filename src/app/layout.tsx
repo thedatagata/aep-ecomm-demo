@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import Footer from "./Footer";
+import Navbar from "./Navbar/Navbar";
 import "./globals.css";
+import { Inter } from "next/font/google";
+import SessionProvider from "./SessionProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "AEP eCommerce Demo",
-  description: "Growing the Next Crop of AEP Expert Trees",
+export const metadata = {
+  title: "Flowmazon",
+  description: "We make your wallet cry",
 };
 
 export default function RootLayout({
@@ -17,7 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="m-auto max-w-7xl p-4">{children}</main>
+        <SessionProvider>
+          <Navbar />
+          <main className="m-auto min-w-[300px] max-w-7xl p-4">{children}</main>
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );
