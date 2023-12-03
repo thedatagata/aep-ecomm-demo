@@ -23,7 +23,7 @@ export default async function Home() {
             <h1 className="text-5xl font-bold">{products[0].prodName}</h1>
             <p className="py-6">{products[0].prodDesc}</p>
             <Link 
-              href={`/product/${products[0].id}`} 
+              href={"/products/" + products[0].id} 
               className="btn btn-primary">
               Get It While It's Hot
             </Link>
