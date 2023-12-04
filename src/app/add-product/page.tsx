@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 
 export const metadata = {
-  title: "Add Product - Flowmazon",
+  title: "Add Product - AEP eCommerce Demo",
 };
 
 async function addProduct(formData: FormData) {
@@ -17,17 +17,17 @@ async function addProduct(formData: FormData) {
     redirect("/api/auth/signin?callbackUrl=/add-product");
   }
 
-  const name = formData.get("name")?.toString();
-  const description = formData.get("description")?.toString();
-  const imageUrl = formData.get("imageUrl")?.toString();
-  const price = Number(formData.get("price") || 0);
+  const prodName = formData.get("name")?.toString();
+  const prodDesc = formData.get("description")?.toString();
+  const prodImg = formData.get("imageUrl")?.toString();
+  const prodPrice = Number(formData.get("price") || 0);
 
-  if (!name || !description || !imageUrl || !price) {
+  if (!prodName || !prodDesc || !prodImg || !prodPrice) {
     throw Error("Missing required fields");
   }
 
   await prisma.product.create({
-    data: { name, description, imageUrl, price },
+    data: { prodName, prodDesc, prodImg, prodPrice },
   });
 
   redirect("/");
@@ -46,26 +46,26 @@ export default async function AddProductPage() {
       <form action={addProduct}>
         <input
           required
-          name="name"
+          name="prodName"
           placeholder="Name"
           className="input-bordered input mb-3 w-full"
         />
         <textarea
           required
-          name="description"
+          name="prodDesc"
           placeholder="Description"
           className="textarea-bordered textarea mb-3 w-full"
         />
         <input
           required
-          name="imageUrl"
+          name="prodImg"
           placeholder="Image URL"
           type="url"
           className="input-bordered input mb-3 w-full"
         />
         <input
           required
-          name="price"
+          name="prodPrice"
           placeholder="Price"
           type="number"
           className="input-bordered input mb-3 w-full"

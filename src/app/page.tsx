@@ -33,16 +33,16 @@ export default async function Home({
         <div className="hero rounded-xl bg-base-200">
           <div className="hero-content flex-col lg:flex-row">
             <Image
-              src={products[0].imageUrl}
-              alt={products[0].name}
+              src={products[0].prodImg}
+              alt={products[0].prodName}
               width={400}
               height={800}
               className="w-full max-w-sm rounded-lg shadow-2xl"
               priority
             />
             <div>
-              <h1 className="text-5xl font-bold">{products[0].name}</h1>
-              <p className="py-6">{products[0].description}</p>
+              <h1 className="text-5xl font-bold">{products[0].prodName}</h1>
+              <p className="py-6">{products[0].prodDesc}</p>
               <Link
                 href={"/products/" + products[0].id}
                 className="btn-primary btn"

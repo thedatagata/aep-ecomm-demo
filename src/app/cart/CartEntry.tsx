@@ -30,17 +30,17 @@ export default function CartEntry({
     <div>
       <div className="flex flex-wrap items-center gap-3">
         <Image
-          src={product.imageUrl}
-          alt={product.name}
+          src={product.prodImg}
+          alt={product.prodName}
           width={200}
           height={200}
           className="rounded-lg"
         />
         <div>
           <Link href={"/products/" + product.id} className="font-bold">
-            {product.name}
+            {product.prodName}
           </Link>
-          <div>Price: {formatPrice(product.price)}</div>
+          <div>Price: {formatPrice(product.prodPrice)}</div>
           <div className="my-1 flex items-center gap-2">
             Quantity:
             <select
@@ -58,7 +58,7 @@ export default function CartEntry({
             </select>
           </div>
           <div className="flex items-center gap-3">
-            Total: {formatPrice(product.price * quantity)}
+            Total: {formatPrice(product.prodPrice * quantity)}
             {isPending && (
               <span className="loading loading-spinner loading-sm" />
             )}

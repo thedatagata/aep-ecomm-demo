@@ -10,7 +10,7 @@ export function generateMetadata({
   searchParams: { query },
 }: SearchPageProps): Metadata {
   return {
-    title: `Search: ${query} - Flowmazon`,
+    title: `Search: ${query} - AEP eCommerce Demo`,
   };
 }
 
@@ -20,8 +20,8 @@ export default async function SearchPage({
   const products = await prisma.product.findMany({
     where: {
       OR: [
-        { name: { contains: query, mode: "insensitive" } },
-        { description: { contains: query, mode: "insensitive" } },
+        { prodName: { contains: query, mode: "insensitive" } },
+        { prodDesc: { contains: query, mode: "insensitive" } },
       ],
     },
     orderBy: { id: "desc" },
